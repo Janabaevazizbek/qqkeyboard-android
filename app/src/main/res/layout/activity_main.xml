@@ -35,4 +35,11 @@
         android:text="@string/help"
         app:icon="@drawable/ic_help_outline_black_24dp" />
 
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="@dimen/standard_margin"
+        android:hint="@string/test_keyboard_here" />
+
 </LinearLayout>

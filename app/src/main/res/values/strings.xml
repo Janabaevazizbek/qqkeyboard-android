@@ -83,11 +83,11 @@
     <string name="pref_keypress_row_numbers">row_numbers</string>
     <string name="pref_keypress_row_additional_letters">row_additional_letters</string>
 
-    <string name="enable_keyboard">KLAVIATURANÍ QOSÍW</string>
-    <string name="change_default_keyboard">TIYKARǴÍ KLAVIATURANÍ ÓZGERTIW</string>
-    <string name="keyboard_settings">KLAVIATURA SAZLAWLARÍ</string>
-    <string name="about_keyboard">KLAVIATURA HAQQÍNDA</string>
-    <string name="help">JÁRDEM</string>
+    <string name="enable_keyboard">Klaviaturanı qosıw</string>
+    <string name="change_default_keyboard">Tiykarǵı klaviaturanı ózgertiw</string>
+    <string name="keyboard_settings">Klaviatura sazlawaları</string>
+    <string name="about_keyboard">Klaviatura haqqında</string>
+    <string name="help">Járdem</string>
 
     <string name="faq_how_to_install_question">QqKeyboard\'tı qalay ornatamız?</string>
     <string name="faq_how_to_install_answer">
@@ -141,10 +141,11 @@
     </string>
     <string name="faq_how_to_find_about_app_question">Klaviatura haqqında maǵlıwmatti qay jerden alsaq boladı?</string>
     <string name="faq_how_to_find_about_app_answer">
-        Baǵdarlama versiyası hám klaviatura haqqında maǵlıwmat alıw ushın aldınǵı bettegi KLAVIATURA HAQQÍNDA
+        Baǵdarlama versiyası hám klaviatura haqqında maǵlıwmat alıw ushın aldınǵı bettegi Klaviatura haqqında
         knopkasın basıń, yamasa mına siltemeni bassańızda boladı.
     </string>
-    <string name="enable_keyboard_first">Dáslep <b>KLAVIATURANÍ QOSÍW</b>ıńız kerek.</string>
+    <string name="enable_keyboard_first">Dáslep <b>Klaviaturanı qosıw</b>ıńız kerek.</string>
     <string name="enable">Qosıw</string>
+    <string name="test_keyboard_here">Klaviaturanı bul jerde sınap kóriń</string>
 
 </resources>

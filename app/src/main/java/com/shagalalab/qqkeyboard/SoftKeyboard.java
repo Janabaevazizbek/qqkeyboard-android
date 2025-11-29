@@ -44,6 +44,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.inputmethod.InputMethodSubtype;
 
 import com.shagalalab.qqkeyboard.util.SettingsUtil;
+import com.shagalalab.qqkeyboard.util.ViewUtils;
 
 import github.ankushsachdeva.emojicon.EmojiconsPopup;
 
@@ -86,6 +87,11 @@ public class SoftKeyboard extends InputMethodService implements KeyboardView.OnK
     private int vibrationLevel;
     private boolean isDefaultKeyboardLatin = true;
     private boolean isKeyboardWithFirstRowNumber = true;
+
+    // Cached window inset values for manual padding application
+    private int mCachedInsetBottom = 0;
+    private int mCachedInsetLeft = 0;
+    private int mCachedInsetRight = 0;
 
     /**
      * Main initialization of the input method component.  Be sure to call
@@ -152,6 +158,24 @@ public class SoftKeyboard extends InputMethodService implements KeyboardView.OnK
                 mInputView.closing(); // Close popup keyboard if it's showing
             }
             return false;
+        });
+
+        // Apply window insets to handle edge-to-edge display on SDK 36+
+        // This ensures the keyboard renders above the navigation bar
+        ViewUtils.applyInsetsToKeyboardView(mInputView);
+
+        // Cache inset values from the view padding (set by inset callback)
+        // This allows us to manually reapply padding on subsequent view creations
+        mInputView.post(() -> {
+            int currentBottom = mInputView.getPaddingBottom();
+            int currentLeft = mInputView.getPaddingLeft();
+            int currentRight = mInputView.getPaddingRight();
+
+            if (currentBottom > 0 || currentLeft > 0 || currentRight > 0) {
+                mCachedInsetBottom = currentBottom;
+                mCachedInsetLeft = currentLeft;
+                mCachedInsetRight = currentRight;
+            }
         });
 
         return mInputView;
@@ -266,6 +290,12 @@ public class SoftKeyboard extends InputMethodService implements KeyboardView.OnK
         super.onStartInputView(attribute, restarting);
         // Recreate input view.
         setInputView(onCreateInputView());
+
+        // Manually apply cached insets if we have them (for 2nd+ keyboard show)
+        // On first show, the inset callback will handle it and we'll cache the values
+        if (mCachedInsetBottom > 0 || mCachedInsetLeft > 0 || mCachedInsetRight > 0) {
+            mInputView.setPadding(mCachedInsetLeft, 0, mCachedInsetRight, mCachedInsetBottom);
+        }
 
         // Dismiss the Emoticons before showing the soft keyboard.
         closeEmoticons();
