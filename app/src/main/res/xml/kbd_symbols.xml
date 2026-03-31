@@ -132,7 +132,8 @@
         <Key
             android:codes="45"
             android:keyWidth="9%p"
-            android:keyLabel="-" />
+            android:keyLabel="-"
+            android:popupCharacters="—" />
         <Key
             android:codes="43"
             android:keyWidth="9%p"
@@ -177,7 +178,8 @@
         <Key
             android:codes="34"
             android:keyWidth="9%p"
-            android:keyLabel="&quot;" />
+            android:keyLabel="&quot;"
+            android:popupCharacters="«»" />
         <Key
             android:codes="39"
             android:keyWidth="9%p"
